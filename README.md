@@ -11,3 +11,6 @@ A simple factor calculator that can calculate the factors of a number.
 
 * ### [Goldbach Conjecture](https://github.com/funnyboy-roks/Random-JavaScript-Projects/tree/master/Goldbach-Conjecture)
 A script that will work through the [Goldbach Conjecture](https://en.wikipedia.org/wiki/Goldbach%27s_conjecture "Wikipedia")
+
+* ### [Hex Word Generator](https://github.com/funnyboy-roks/Random-JavaScript-Projects/tree/master/hex-word-gen/client)
+A simple button that will create a random hexadecimal value that works as a word, like `facade` or `c0ffee`

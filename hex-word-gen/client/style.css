@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap');
+
+* {
+	font-family: 'Source Code Pro', monospace;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	width: 100vw;
+	display: flex;
+	justify-content: center;
+}
+
+#content {
+	margin: auto;
+	text-align: center;
+}
+
+#hex {
+	font-size: 10em;
+}
+
+button {
+	font-size: 2em;
+	background: #fffa;
+	border: none;
+	outline: none;
+	padding: 1em;
+}
+
+#ext {
+	font-size: 2em;
+}
