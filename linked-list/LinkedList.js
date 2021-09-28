@@ -1,4 +1,4 @@
-class LinkedList {
+export default class LinkedList {
 	constructor(value = null, head = null) {
 		this.head = head;
 		this.tail = null;
@@ -44,5 +44,3 @@ class LinkedList {
 		return out;
 	}
 }
-
-module.exports = LinkedList;
