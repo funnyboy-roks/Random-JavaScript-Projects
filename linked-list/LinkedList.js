@@ -6,13 +6,17 @@ export default class LinkedList {
 	}
 
 	get(i) {
+		if (this.tail == null && i != 0) {
+			throw new Error('Index out of bounds');
+			return;
+		}
 		return i == 0 ? this.value : this.tail?.get(i - 1);
 	}
 
 	add(item) {
 		if (this.value == null) {
 			this.value = item;
-            return;
+			return;
 		}
 		if (this.tail == null) {
 			this.tail = new LinkedList(item, this);
@@ -23,7 +27,10 @@ export default class LinkedList {
 
 	remove(i) {
 		if (i != 0) {
-			this.tail?.remove(i - 1);
+			if (this.tail == null) {
+				throw new Error('Index out of bounds');
+			}
+			this.tail.remove(i - 1);
 			return;
 		}
 		const head = this.head;
