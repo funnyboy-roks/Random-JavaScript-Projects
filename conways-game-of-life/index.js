@@ -1,11 +1,14 @@
 const size = 25;
 let cells = [];
+let STATE = 'STOP';
+const framesMod = 1; // Amount of frames between each cell update
 
 function setup() {
-    createCanvas(600, 400);
-    for (let i = 0; i < width / size; i++) {
+    // createCanvas(600, 400);
+    createCanvas(windowWidth, windowHeight);
+    for (let i = 0; i < Math.floor(width / size); i++) {
         cells[i] = [];
-        for (let j = 0; j < width / size; j++) {
+        for (let j = 0; j < Math.floor(width / size); j++) {
             cells[i][j] = 0;
         }
     }
@@ -13,21 +16,24 @@ function setup() {
 }
 
 function draw() {
-
+    background(200);
     for (let y in cells) {
         for (let x in cells[y]) {
             fill(255 - cells[y][x] * 255);
+            stroke(cells[y][x] * 255);
+            strokeWeight(2);
             rect(x * size, y * size, size, size);
         }
     }
     if (mouseIsPressed) {
         const x = floor(mouseX / size);
         const y = floor(mouseY / size);
-        cells[y][x] = 1;
+        cells[y][x] = key == 'c' ? 0 : 1;
     }
-
-    if (frameCount % 30 == 0) {
-        update();
+    if (STATE == 'PLAY') {
+        if (frameCount % framesMod == 0) {
+            update();
+        }
     }
 }
 
@@ -49,7 +55,6 @@ function update() {
         }
         next.push(arr);
     }
-    // console.log(next);
     cells = next;
 }
 
@@ -59,15 +64,33 @@ function countNeighbors(x, y) {
         for (let j = -1; j < 2; j++) {
             const newX = (x + j + (width / size)) % (width / size);
             const newY = (y + i + (height / size)) % (height / size);
-                // print(y, i, y+i)
-                sum += cells[newY][newX];
+            // print(y, i, y+i)
+            sum += cells[newY][newX];
         }
     }
     return sum - cells[y][x];
 }
 
-function mousePressed() {
-    const x = floor(mouseX / size);
-    const y = floor(mouseY / size);
-    cells[y][x] = 1;
+function keyPressed() {
+    if (key == ' ') {
+        switch (STATE) {
+            case 'STOP':
+                STATE = 'PLAY';
+                break;
+            case 'PLAY':
+                STATE = 'STOP';
+                reset();
+                break;
+        }
+    }
+}
+
+function reset() {
+    cells = [];
+    for (let i = 0; i < width / size; i++) {
+        cells[i] = [];
+        for (let j = 0; j < width / size; j++) {
+            cells[i][j] = 0;
+        }
+    }
 }
