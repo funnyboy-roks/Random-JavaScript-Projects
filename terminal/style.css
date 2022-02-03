@@ -1,0 +1,39 @@
+* {
+	color: lime;
+	font-family: monospace;
+	font-size: 1.2rem;
+}
+
+body {
+	background: black;
+}
+
+#history {
+	/* font-weight: bold; */
+	position: fixed;
+	bottom: 5em;
+    left: 2em;
+}
+
+#command-line {
+	outline: none;
+	border: none;
+	width: 90vw;
+	left: 3em;
+	background: none;
+}
+
+#command-line,
+label {
+	position: fixed;
+	/* height: 2em; */
+	bottom: 3em;
+}
+
+label {
+	left: 2em;
+}
+
+.output {
+    color: white;
+}
